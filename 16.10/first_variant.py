@@ -30,15 +30,13 @@ def population(n, a, baby, c, p, lst, i):
             lst[j] = lst[j] - count   # съели кроликов
         if len(lst) <= a:
             lst.append(0)
-            return population(n, a, baby, c, p, lst, i=i+1)
         elif c > len(lst) > a:
             n += sum([k * baby for k in lst[0:len(lst) - a]])
             lst = lst + [sum([k * baby for k in lst[0:len(lst) - a]])]
-            return population(n, a, baby, c, p, lst, i=i + 1)
         else:
             n += sum([k * baby for k in lst[0:len(lst) - a]]) - lst[0]
             lst = lst[1:] + [sum([k * baby for k in lst[0:len(lst) - a]])]
-            return population(n, a, baby, c, p, lst, i=i + 1)
+        return population(n, a, baby, c, p, lst, i=i + 1)
 
 
 A = int(input("Введите количество сезонов до взрослого состояния: "))
